@@ -96,8 +96,8 @@ Our app lets registered users create sets of terms and definitions customized fo
 * Setting -> Settings Page
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+![handdrawn designs](https://user-images.githubusercontent.com/85243009/200191100-a55a11ce-d7ff-4ce7-b5d6-c9fcf2f74483.jpg)
+
 
 ### [BONUS] Digital Wireframes & Mockups
 ![lowfi screens](https://user-images.githubusercontent.com/85243009/200190505-373b1bf9-47b8-4790-a999-555eb27b315b.png)
