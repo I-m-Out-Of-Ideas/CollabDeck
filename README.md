@@ -88,12 +88,24 @@ Our app lets registered users create sets of terms and definitions customized fo
 
 **Flow Navigation** (Screen to Screen)
 
-* Landing Page -> Register/Login -> Home
-* Home -> Click on set -> Set Detail page -> Click on flashcard -> Edit Flashcard page
-* Home -> Click on set -> Set Detail page -> Click on leaderboard button -> Leaderboard page
-* Create -> Create set page -> Set Detail page
-* Profile -> Edit Profile page
-* Setting -> Settings Page
+* Landing Page -> Click on Register/Login button -> Home screen
+* Home -> Click on flashcard set -> Set View screen
+* Home -> Click on Logout Button -> Logout Screen
+* Home -> Click on New Set button -> Create Blank Set screen
+* Home -> Click on Profile button -> Profile screen
+* Home -> Click on Settings button -> Settings screen
+* Settings -> Click on Delete Account button -> Delete Account screen
+* Profile -> Click on Edit Profile button -> Edit Profile screen
+* Edit Profile -> Click Open Camera/Open Gallery button -> Opens the phone's Camera/Photo Gallery
+* Set View -> Click on flashcard/Test Mode button -> Front of Card screen
+* Set View -> Click on Leaderboard (star) button -> Leaderboard screen
+* Set View -> Click on Add Card button -> Edit/Compose card screen
+* Set View -> Click on Collaborators button -> Invite Collaborators screen
+* Front of card -> Click on Flip Card button -> Back of Card screen
+* Front of card -> Click on Comments button -> Flashcard Comments screen
+* Front of card -> Click on Edit Card button -> Edit/Compose Card screen
+* ('Front of Card' and 'Back of Card' screens share the same functionalities)
+* Comments screen -> Click on Add Comment button -> Compose Comment screen
 
 ## Wireframes
 ![handdrawn designs](https://user-images.githubusercontent.com/85243009/200191100-a55a11ce-d7ff-4ce7-b5d6-c9fcf2f74483.jpg)
