@@ -40,11 +40,10 @@ Our app lets registered users create sets of terms and definitions customized fo
 * Correct answer reports from the user will update a tally as they run through the set of flashcards.
 * Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
 * User can comment on flashcard
-* User can view all comments in study set
-* User can view all comments in flashcard
-* Profile page to see user's sets, edit profile
+* User can view all comments in study set/flashcards
+* Profile page with options to edit profile picture, and logout
 * Settings (notification, logout, delete account)
-* User can update their profile image from their camera roll
+* User can update their profile image from their photo gallery or by taking a picture with their camera
 
 **Optional Nice-to-have Stories**
 
@@ -62,9 +61,8 @@ Our app lets registered users create sets of terms and definitions customized fo
    * The current signed in user is persisted accross app restarts
 * Stream
    * Upon login, user can view all sets
-   * User can view all comments in study set
    * User can view each collaborator's top score in study set
-   * User can view all comments in flashcard
+   * User can view all comments in flashcard/study set
 * Detail
    * User can add collaborators to study set
    * User can edit flashcards
@@ -73,7 +71,7 @@ Our app lets registered users create sets of terms and definitions customized fo
    * User can create study set and add flashcards
    * User can comment on flashcard
 * Profile
-   * Profile page to see user's sets, edit profile
+   * Profile page to see user's profile picture, edit profile, or logout
    
 * Settings
    * Settings (notification, logout, delete account)
@@ -85,6 +83,7 @@ Our app lets registered users create sets of terms and definitions customized fo
 * Home
 * Create
 * Profile
+* Settings
 
 **Flow Navigation** (Screen to Screen)
 
