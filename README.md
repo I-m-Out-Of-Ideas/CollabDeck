@@ -101,6 +101,7 @@ Our app lets registered users create sets of terms and definitions customized fo
 
 ### [BONUS] Digital Wireframes & Mockups
 ![lowfi screens](https://user-images.githubusercontent.com/85243009/200190505-373b1bf9-47b8-4790-a999-555eb27b315b.png)
+![hi-fi_design](https://github.com/I-m-Out-Of-Ideas/ImOutOfIdeas/blob/master/design%20files/hifi_design.png)
 
 ### [BONUS] Interactive Prototype
 
