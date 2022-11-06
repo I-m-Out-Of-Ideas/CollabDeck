@@ -104,6 +104,7 @@ Our app lets registered users create sets of terms and definitions customized fo
 ![hi-fi_design](https://github.com/I-m-Out-Of-Ideas/ImOutOfIdeas/blob/master/design%20files/hifi_design.png)
 
 ### [BONUS] Interactive Prototype
+![navigation](https://user-images.githubusercontent.com/85243009/200195941-706c3704-6caa-472d-b580-28d3ce190187.gif)
 
 ## Schema 
 [This section will be completed in Unit 9]
