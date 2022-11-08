@@ -122,6 +122,8 @@ Our app lets registered users create sets of terms and definitions customized fo
 ### Models
 [Add table of models]
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+List of network requests by screen
+- (Read/GET) Query all study sets associated with user
+- (Create/STUDYSET) Create a new study set
+- (Create/FLASHCARD) Create a new flashcard
+- (Delete) Delete existing flashcard
