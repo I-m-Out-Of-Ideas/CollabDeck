@@ -120,10 +120,88 @@ Our app lets registered users create sets of terms and definitions customized fo
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+StudySet
+|Property|Type|Description|
+|-|-|-|
+|setId|String|unique id for the study set (default)|
+|setName|String|set name|
+|username|Array of Pointer to User|study set collaborators|
+
+FlashCard
+|Property|Type|Description|
+|-|-|-|
+|cardId|String|unique id for the flashcard (default)|
+|setId|Pointer to StudySet|StudySet setId|
+|frontCard|String|term|
+|backCard|String|definition|
+
+Comments
+|Property|Type|Description|
+|-|-|-|
+|commentId|String|unique id for the comment (default)|
+|cardId|Pointer to FlashCard|FlashCard cardId|
+|username|Pointer to user|User id|
+|comment|String|comment|
+
+LeaderBoard
+|Property|Type|Description|
+|-|-|-|
+|leaderBoardId|String|unique id for the leaderboard (default)|
+|setId|Pointer to StudySet|StudySet setId|
+|userName|Pointer to User|User id|
+|score|int|score user got while self testing|
+
 ### Networking
 List of network requests by screen
-- (Read/GET) Query all study sets associated with user
-- (Create/STUDYSET) Create a new study set
-- (Create/FLASHCARD) Create a new flashcard
-- (Delete) Delete existing flashcard
+- Home
+  - (Read/GET) Query all study sets associated with user
+  ```kotlin
+  val query : ParseQuery<StudySet> = ParseQuery.getQuery(StudySet::class.java)
+  query.include(StudySet.KEY_USER)
+  query.addDescendingOrder("createdAt")
+  query.findInBackground(object : FindCallback<StudySet> {
+      override fun done(studySetList: MutableList<StudySet>?, e: ParseException?) {
+          if (e != null) {
+              Log.e("ACTIVITY" , "queryPosts failure ${e}")
+          } else {
+              if (studySetList != null) {
+                  if (studySetList.size != 0) {
+                      Log.e("ACTIVITY", "queryPosts success")
+                  }
+              }
+          }
+      }
+  })
+  ```
+  - (Create/STUDYSET) Create a new study set
+- Set View
+  - (Create/FLASHCARD) Create a new flashcard
+  - (Delete) Delete existing flashcard
+-Front of Card
+  - (Read/GET) Query all comments associated with flashcard
+  ```kotlin
+  val query : ParseQuery<Comment> = ParseQuery.getQuery(Comment::class.java)
+        query.include(Comment.KEY_COMMENTER)
+        query.include(Comment.KEY_STUDYSET)
+        query.whereEqualTo(Comment.KEY_STUDYSET, studyset);
+        query.addDescendingOrder("createdAt")
+        query.findInBackground(object : FindCallback<Comment> {
+            override fun done(commentList: MutableList<Comment>?, e: ParseException?) {
+                if (e != null) {
+                    Log.e("ACTIVITY" , "queryComments failure ${e}")
+                } else {
+                    if (commentList != null) {
+                        if (commentList.size != 0) {
+                            Log.e("RITIKA", "queryComments success")
+                        }
+                    }
+                }
+            }
+
+        })
+  ```
+  - (Create/COMMENT) Create a new comment
+  - (Delete) Delete existing comment
+- Profile
+  - (Read/GET) Query logged in user object
+  - (Update/PUT) Update user profile image
