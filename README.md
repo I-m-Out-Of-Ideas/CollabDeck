@@ -132,8 +132,8 @@ FlashCard
 |-|-|-|
 |cardId|String|unique id for the flashcard (default)|
 |setId|Pointer to StudySet|StudySet setId|
-|frontCard|String|term|
-|backCard|String|definition|
+|term|String|term|
+|definition|String|definition|
 
 Comments
 |Property|Type|Description|
