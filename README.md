@@ -120,6 +120,13 @@ Our app lets registered users create sets of terms and definitions customized fo
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
+Users
+|Property|Type|Description|
+|-|-|-|
+|username|String|unique id set by each user|
+|email|String|email set by user|
+|password|String|password set by user|
+
 StudySet
 |Property|Type|Description|
 |-|-|-|
