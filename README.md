@@ -164,48 +164,126 @@ List of network requests by screen
   - (Read/GET) Query all study sets associated with user
   ```kotlin
   val query : ParseQuery<StudySet> = ParseQuery.getQuery(StudySet::class.java)
-  query.include(StudySet.KEY_USER)
+  query.include("username")
   query.addDescendingOrder("createdAt")
   query.findInBackground(object : FindCallback<StudySet> {
       override fun done(studySetList: MutableList<StudySet>?, e: ParseException?) {
           if (e != null) {
               Log.e("ACTIVITY" , "queryPosts failure ${e}")
           } else {
-              if (studySetList != null) {
-                  if (studySetList.size != 0) {
-                      Log.e("ACTIVITY", "queryPosts success")
-                  }
+              Log.e("ACTIVITY", "queryPosts success")
               }
           }
       }
   })
   ```
-  - (Create/STUDYSET) Create a new study set
 - Set View
+  - (Create/STUDYSET) Create a new study set
+  ```kotlin
+  val set = StudySet()
+  set.addCollaborator(user)
+  set.setSetName(setName)
+  set.saveInBackground { exception ->
+      if (exception != null) {
+          Log.d("ACTIVITY" , "set create failure ${exception}")
+      } else {
+          Log.d("ACTIVITY" , "set create success")
+      }
+  }
+  ```
+  - (READ/GET) Get flashcards in set
+  ```kotlin
+  val query : ParseQuery<FlashCard> = ParseQuery.getQuery(FlashCard::class.java)
+  query.include("term")
+  query.include("definition")
+  query.whereEqualTo("setId", set.objectId);
+  query.addDescendingOrder("createdAt")
+  query.findInBackground(object : FindCallback<FlashCard> {
+      override fun done(cardsList: MutableList<FlashCard>?, e: ParseException?) {
+          if (e != null) {
+              Log.e("ACTIVITY" , "flashcarsd get failure ${e}")
+          } else {
+              Log.e("ACTIVITY", "flashcards set success")
+              }
+          }
+      }
+
+  })
+  ```
   - (Create/FLASHCARD) Create a new flashcard
+   ```kotlin
+  val flashcard = FlashCard()
+  flashcard.setSet(set)
+  flashcard.setTerm(term)
+  flashcard.setDefinition(definition)
+  flashcard.saveInBackground { exception ->
+      if (exception != null) {
+          Log.d("ACTIVITY" , "flashcard create failure ${exception}")
+      } else {
+          Log.d("ACTIVITY" , "flashcard create success")
+      }
+  }
+   ```
+  - (UPDATE/PUT) Edit existing flashcard
+  ```kotlin
+  val query : ParseQuery<FlashCard> = ParseQuery.getQuery(FlashCard::class.java)
+  query.getInBackground("QHjRWwgEtd", new GetCallback <FlashCard>() {
+      public void done(FlashCard flashcard, ParseException e) {
+          if (e == null) {
+              Log.d("ACTIVITY" , "flashcard edit success")
+              flashcard.put("term", newTerm)
+              flashcard.put("definition", newDefinition)
+              flashcard.saveInBackground()
+          } else {
+              Log.d("ACTIVITY" , "flashcard edit failure ${exception}")
+          }
+      }
+  })
+  ```
   - (Delete) Delete existing flashcard
--Front of Card
+  ```kotlin
+  val flashcard = FlashCard()
+  flashcard.whereEqualTo("objectId", "HMcTr9rD3s")
+  flashcard.findInBackground(new FindCallback <FlashCard>() {
+      @Override
+      public void done(final List <FlashCard> card, ParseException e) {
+          if (e == null) {
+              Log.d("ACTIVITY" , "flashcard get success")
+              card.get(0).deleteInBackground(new DeleteCallback () {
+                  @Override
+                  public void done(ParseException e) {
+                      if (e == null) {
+                          Log.d("ACTIVITY" , "flashcard delete success")
+                      } else {
+                          Log.d("ACTIVITY" , "flashcard delete failure ${exception}")
+                      }
+                  }
+              })
+          } else {
+              Log.d("ACTIVITY" , "flashcard get failure ${exception}")
+          }
+      }
+  }
+  ```
+- Front of Card
   - (Read/GET) Query all comments associated with flashcard
   ```kotlin
   val query : ParseQuery<Comment> = ParseQuery.getQuery(Comment::class.java)
-        query.include(Comment.KEY_COMMENTER)
-        query.include(Comment.KEY_STUDYSET)
-        query.whereEqualTo(Comment.KEY_STUDYSET, studyset);
-        query.addDescendingOrder("createdAt")
-        query.findInBackground(object : FindCallback<Comment> {
-            override fun done(commentList: MutableList<Comment>?, e: ParseException?) {
-                if (e != null) {
-                    Log.e("ACTIVITY" , "queryComments failure ${e}")
-                } else {
-                    if (commentList != null) {
-                        if (commentList.size != 0) {
-                            Log.e("RITIKA", "queryComments success")
-                        }
-                    }
-                }
-            }
+  query.include("username")
+  query.include("cardId")
+  query.whereEqualTo("flashcard", flashcard.objectId);
+  query.addDescendingOrder("createdAt")
+  query.findInBackground(object : FindCallback<Comment> {
+      override fun done(commentList: MutableList<Comment>?, e: ParseException?) {
+          if (e != null) {
+              Log.e("ACTIVITY" , "queryComments failure ${e}")
+          } else {
+              Log.e("ACTIVITY", "queryComments success")
+              }
+          }
+      }
 
-        })
+  })
   ```
   - (Create/COMMENT) Create a new comment
   - (Delete) Delete existing comment
