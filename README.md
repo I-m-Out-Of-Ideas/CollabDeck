@@ -288,5 +288,15 @@ List of network requests by screen
   - (Create/COMMENT) Create a new comment
   - (Delete) Delete existing comment
 - Profile
-  - (Read/GET) Query logged in user object
+  - (users/GET) Query logged in user object
+- Edit Profile
+  - (users/GET) Query logged in user object
   - (Update/PUT) Update user profile image
+- Register
+  - (users/POST) Sign-up user
+  - (me/users/GET) User account persists upon app restart
+- Login 
+  - (login/GET) User logs into their account
+  - (me/users/GET) User account persists upon app restart
+- Logout
+  - (users/GET) Query logged in user object
