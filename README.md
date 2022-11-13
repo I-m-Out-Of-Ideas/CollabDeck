@@ -287,16 +287,97 @@ List of network requests by screen
   ```
   - (Create/COMMENT) Create a new comment
   - (Delete) Delete existing comment
+
 - Profile
-  - (users/GET) Query logged in user object
+  - (users/GET) Load user profile info
+```kotlin
+    if (ParseUser.getCurrentUser() != null) {
+       // load profile information
+    }
+```
+
 - Edit Profile
-  - (users/GET) Query logged in user object
+  - (users/GET) Load user profile info
+  ```kotlin
+    if (ParseUser.getCurrentUser() != null) {
+       // load profile information
+    }
+  ```
   - (Update/PUT) Update user profile image
+  ```kotlin
+    ParseUser currentUser = ParseUser.getCurrentUser();
+      if (currentUser != null) {
+        // Other attributes than "photo" will remain unchanged!
+        currentUser.put("photo", image.jpg);
+
+        // Saves the object.
+        currentUser.saveInBackground(e -> {
+          if(e==null){
+            //Save successfull
+            Toast.makeText(this, "Save Successful", Toast.LENGTH_SHORT).show();
+          }else{
+            // Something went wrong while saving
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+          }
+        });
+      }
+  ```
 - Register
   - (users/POST) Sign-up user
+  ```kotlin
+        val user = ParseUser()
+
+        user.setUsername('username')
+        user.setPassword('password')
+        user.setEmail('email')
+        
+        user.signUpInBackground() { e ->
+            if (e == null) {
+                // user has successfully created an account
+                // Nagivate user to Home screen
+            
+            } else {
+                e.printStackTrace()
+            }
+        }  
+  ```
   - (me/users/GET) User account persists upon app restart
+  ```kotlin
+    if (ParseUser.getCurrentUser() != null) {
+       // keep user logged in
+    }
+  ```
+  
+  
 - Login 
   - (login/GET) User logs into their account
+  ```kotlin
+    ParseUser.logInInBackground(username, password) { user, e ->
+            if (user != null) {
+                Log.i(TAG, "User successfully logged in.")
+                // navigate to home screen
+            } else {
+                e.printStackTrace()
+                Toast.makeText(this, "Error logging in", Toast.LENGTH_SHORT).show()
+            }
+        }
+  ```
   - (me/users/GET) User account persists upon app restart
+  ```kotlin
+    if (ParseUser.getCurrentUser() != null) {
+       // keep user logged in
+    }
+  ```
+
 - Logout
-  - (users/GET) Query logged in user object
+  - (users/GET) Load user profile info
+  ```kotlin
+    if (ParseUser.getCurrentUser() != null) {
+       // load profile information
+    }
+  ```
+  - Log user out
+  ```kotlin
+    ParseUser.logOut()
+    var currentUser = ParseUser.getCurrentUser() // this will now be null
+  ```
