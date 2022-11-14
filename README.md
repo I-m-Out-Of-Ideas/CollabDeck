@@ -286,7 +286,44 @@ List of network requests by screen
   })
   ```
   - (Create/COMMENT) Create a new comment
+  ```kotlin
+  val comment = Comment()
+  comment.setCard(set)
+  comment.setUser(user)
+  comment.setText(text)
+  comment.saveInBackground { exception ->
+      if (exception != null) {
+          Log.d("ACTIVITY" , "comment create failure ${exception}")
+      } else {
+          Log.d("ACTIVITY" , "comment create success")
+      }
+  }
+  ```
   - (Delete) Delete existing comment
+  ```kotlin
+  val comment = Comment()
+  comment.whereEqualTo("objectId", "HMcTr9rD3s")
+  comment.findInBackground(new FindCallback <Comment>() {
+      @Override
+      public void done(final List <Comment> card, ParseException e) {
+          if (e == null) {
+              Log.d("ACTIVITY" , "comment get success")
+              comment.get(0).deleteInBackground(new DeleteCallback () {
+                  @Override
+                  public void done(ParseException e) {
+                      if (e == null) {
+                          Log.d("ACTIVITY" , "comment delete success")
+                      } else {
+                          Log.d("ACTIVITY" , "comment delete failure ${exception}")
+                      }
+                  }
+              })
+          } else {
+              Log.d("ACTIVITY" , "comment get failure ${exception}")
+          }
+      }
+  }
+  ```
 
 - Profile
   - (users/GET) Load user profile info
