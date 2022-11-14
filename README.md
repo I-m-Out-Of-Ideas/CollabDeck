@@ -296,6 +296,41 @@ List of network requests by screen
     }
 ```
 
+- Leaderboard
+  - (Read/GET) Query all study scores associated with flashcard set
+  ```kotlin
+  val query : ParseQuery<LeaderBoard> = ParseQuery.getQuery(LeaderBoard::class.java)
+  query.include("username")
+  query.include("cardId")
+  query.whereEqualTo("StudySet", StudySet.objectId);
+  query.addDescendingOrder("score")
+  query.findInBackground(object : FindCallback<LeaderBoard> {
+      override fun done(scoreList: MutableList<LeaderBoard>?, e: ParseException?) {
+          if (e != null) {
+              Log.e("ACTIVITY" , "queryScores failure ${e}")
+          } else {
+              Log.e("ACTIVITY", "queryScores success")
+              }
+          }
+      }
+
+  })
+  ```
+  - (Create/USERSCORE) Populate leaderboard with a new user score
+   ```kotlin
+  val uscore = LeaderBoard() 
+  uscore.setSet(set)
+  uscore.setScore(score)
+  uscore.setUser(ParseUser.getCurrentUser())
+  uscore.saveInBackground { exception ->
+      if (exception != null) {
+          Log.d("ACTIVITY" , "score save failure ${exception}")
+      } else {
+          Log.d("ACTIVITY" , "score save success")
+      }
+  }
+   ```
+
 - Edit Profile
   - (users/GET) Load user profile info
   ```kotlin
