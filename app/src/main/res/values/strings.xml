@@ -1,5 +1,9 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">CollabDeck</string>
+=======
+    <string name="app_name">ImOutOfIdeas</string>
+>>>>>>> b0120f0a44d3588f01d81336a432c4383543ae7f
     <string name="back4app_server_url">https://parseapi.back4app.com/</string>
     <string name="back4app_app_id">p1ayUfNJ9ObYrhsIjnPslwAoPbvdABdrEL47ed18</string>
     <string name="back4app_client_key">O4tM0Zndiaqn4NHFwxqmn7lQIMhpRi9LWqSWctZJ</string>
