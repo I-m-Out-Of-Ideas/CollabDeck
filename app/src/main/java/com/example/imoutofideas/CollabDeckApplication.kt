@@ -1,6 +1,7 @@
 package com.example.imoutofideas
 
 import android.app.Application
+import com.example.testapp.R
 import com.parse.Parse
 
 class CollabDeckApplication : Application() {
