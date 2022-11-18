@@ -20,13 +20,26 @@
         android:theme="@style/Theme.Testapp"
         tools:targetApi="31">
         <activity
+            android:name=".editProfileActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".profile_activity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".logoutConfirmationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <!--
         android:theme="@style/Theme.ImOutOfIdeas"
         tools:targetApi="31">
