@@ -7,7 +7,7 @@
     tools:context=".editProfileActivity">
 
     <TextView
-        android:id="@+id/userName2"
+        android:id="@+id/tvUsernameE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Leo"

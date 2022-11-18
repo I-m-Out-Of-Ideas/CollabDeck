@@ -2,14 +2,17 @@ package com.example.testapp
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.parse.ParseFile
@@ -21,11 +24,17 @@ class editProfileActivity : AppCompatActivity() {
     val photoFileName = "profile.jpg"
     var photoFile: File? = null
     val CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034
-    lateinit var ivPreview: ImageView
+    lateinit var ivProfileImage: ImageView
+    lateinit var tvUsernameE: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
+        ivProfileImage = findViewById(R.id.ivProfileImage)
+        tvUsernameE = findViewById(R.id.tvUsernameE)
+        //TODO: populate tvUsernameE with current profile image
+        //so that when the user opens edit profile they can see their pfp
+        tvUsernameE.text = ParseUser.getCurrentUser().username.toString()
         // take picture
         findViewById<Button>(R.id.openCamera).setOnClickListener{
             onLaunchCamera()
@@ -102,6 +111,8 @@ class editProfileActivity : AppCompatActivity() {
         // Return the file target for the photo based on filename
         return File(mediaStorageDir.path + File.separator + fileName)
     }
+
+
 
     companion object {
         val TAG = "editProfileActivity"
