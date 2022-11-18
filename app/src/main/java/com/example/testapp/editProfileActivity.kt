@@ -32,7 +32,7 @@ class editProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_profile)
         ivProfileImage = findViewById(R.id.ivProfileImage)
         tvUsernameE = findViewById(R.id.tvUsernameE)
-        //TODO: populate tvUsernameE with current profile image
+        //TODO: populate ivProfileImage with current profile image
         //so that when the user opens edit profile they can see their pfp
         tvUsernameE.text = ParseUser.getCurrentUser().username.toString()
         // take picture
@@ -44,7 +44,7 @@ class editProfileActivity : AppCompatActivity() {
             val user = ParseUser.getCurrentUser()
             user.put("pfp", ParseFile(photoFile))
             user.saveInBackground()
-            val intent = Intent(this@editProfileActivity, profile_activity::class.java)
+            val intent = Intent(this@editProfileActivity, editProfileActivity::class.java)
             startActivity(intent)
         }
         // cancel changes, return user to profile screen
