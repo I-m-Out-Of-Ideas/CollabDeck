@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:id="@+id/id_editLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/id_editBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_toLeftOf="@id/id_delBtn"
+                android:clickable="true"
+                android:src="@drawable/edit" />
+
+            <ImageView
+                android:id="@+id/id_delBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:clickable="true"
+                android:src="@drawable/delete" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/id_termLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_editLayout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" >
+
+            <TextView
+                android:id="@+id/id_term"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="term" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_term"
+                android:textStyle="bold"
+                android:text="TERM"
+                android:textSize="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/id_definitionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_termLayout"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true" >
+
+            <TextView
+                android:id="@+id/id_definition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="definition"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_definition"
+                android:textStyle="bold"
+                android:text="DEFINITION"
+                android:textSize="10dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -8,7 +8,6 @@ android {
 
     defaultConfig {
         applicationId "com.example.testapp"
-        applicationId "com.example.imoutofideas"
         minSdk 23
         targetSdk 32
         versionCode 1

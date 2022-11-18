@@ -5,8 +5,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".CollabDeckApplication"
@@ -20,13 +18,31 @@
         android:theme="@style/Theme.Testapp"
         tools:targetApi="31">
         <activity
+            android:name=".EditSetName"
+            android:exported="false" />
+        <activity
+            android:name=".CreateSet"
+            android:exported="false" />
+        <activity
+            android:name=".EditFlashCard"
+            android:exported="false" />
+        <activity
+            android:name=".AddFlashCard"
+            android:exported="false" />
+        <activity
+            android:name=".EditSet"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".StudySetActivity"
+            android:exported="false" />
+        <activity
             android:name=".logoutConfirmationActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <!--
         android:theme="@style/Theme.ImOutOfIdeas"
         tools:targetApi="31">
