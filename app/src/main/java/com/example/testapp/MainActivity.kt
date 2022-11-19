@@ -24,5 +24,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // take user to settings screen
+        findViewById<Button>(R.id.settings_button).setOnClickListener {
+            val intent = Intent(this@MainActivity, settingsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
