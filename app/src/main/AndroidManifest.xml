@@ -37,6 +37,9 @@
             android:name=".StudySetActivity"
             android:exported="false" />
         <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".logoutConfirmationActivity"
             android:exported="false">
             <meta-data
