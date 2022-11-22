@@ -1,15 +1,11 @@
-package com.example.imoutofideas
+package com.example.testapp
 
 import android.app.Application
-import com.example.testapp.R
 import com.parse.Parse
 
 class CollabDeckApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-
-        //ParseObject.registerSubclass(Post::class.java)
-
         Parse.initialize(
             Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))

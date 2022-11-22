@@ -2,6 +2,7 @@ package com.example.imoutofideas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.testapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
