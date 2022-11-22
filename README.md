@@ -28,22 +28,22 @@ Our app lets registered users create sets of terms and definitions customized fo
 
 **Required Must-have Stories**
 
-* User can sign up to create a new account using Parse authentication
-* User can log in and log out of his or her account
-* The current signed in user is persisted accross app restarts
-* Upon login, user can view all sets
-* User can create study set and add flashcards
-* User can add collaborators to study set
-* User can edit flashcards
-* User can test themselves with term, definition, or both
-* User can mark whether they got a correct or incorrect term/definition when quizzing themself
-* Correct answer reports from the user will update a tally as they run through the set of flashcards.
-* Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
-* User can comment on flashcard
-* User can view all comments in study set/flashcards
-* Profile page with options to edit profile picture, and logout
-* Settings (notification, logout, delete account)
-* User can update their profile image from their photo gallery or by taking a picture with their camera
+[x] User can sign up to create a new account using Parse authentication
+[x] User can log in and log out of his or her account
+[x] The current signed in user is persisted accross app restarts
+[] Upon login, user can view all sets
+[x] User can create study set and add flashcards
+[] User can add collaborators to study set
+[] User can edit flashcards
+[x] User can test themselves with term, definition, or both
+[] User can mark whether they got a correct or incorrect term/definition when quizzing themself
+[] Correct answer reports from the user will update a tally as they run through the set of flashcards.
+[] Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
+[] User can comment on flashcard
+[] User can view all comments in study set/flashcards
+[x] Profile page with options to edit profile picture, and logout
+[x] Settings (notification, logout, delete account)
+[] User can update their profile image from their photo gallery or by taking a picture with their camera
 
 **Optional Nice-to-have Stories**
 
@@ -105,6 +105,14 @@ Our app lets registered users create sets of terms and definitions customized fo
 * Front of card -> Click on Edit Card button -> Edit/Compose Card screen
 * ('Front of Card' and 'Back of Card' screens share the same functionalities)
 * Comments screen -> Click on Add Comment button -> Compose Comment screen
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src="CollabDeckSprint1GIF.gif" width=25% height=25%><br>
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Wireframes
 ![handdrawn designs](https://user-images.githubusercontent.com/85243009/200191100-a55a11ce-d7ff-4ce7-b5d6-c9fcf2f74483.jpg)
