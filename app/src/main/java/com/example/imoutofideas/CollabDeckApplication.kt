@@ -1,7 +1,6 @@
 package com.example.imoutofideas
 
 import android.app.Application
-import com.example.testapp.R
 import com.parse.Parse
 
 class CollabDeckApplication : Application() {
@@ -10,11 +9,11 @@ class CollabDeckApplication : Application() {
 
         //ParseObject.registerSubclass(Post::class.java)
 
-        Parse.initialize(
+        /*Parse.initialize(
             Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))
                 .clientKey(getString(R.string.back4app_client_key))
                 .server(getString(R.string.back4app_server_url))
-                .build());
+                .build());*/
     }
 }
