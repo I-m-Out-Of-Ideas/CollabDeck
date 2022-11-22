@@ -28,29 +28,29 @@ Our app lets registered users create sets of terms and definitions customized fo
 
 **Required Must-have Stories**
 
-[x] User can sign up to create a new account using Parse authentication
-[x] User can log in and log out of his or her account
-[x] The current signed in user is persisted accross app restarts
-[] Upon login, user can view all sets
-[x] User can create study set and add flashcards
-[] User can add collaborators to study set
-[] User can edit flashcards
-[x] User can test themselves with term, definition, or both
-[] User can mark whether they got a correct or incorrect term/definition when quizzing themself
-[] Correct answer reports from the user will update a tally as they run through the set of flashcards.
-[] Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
-[] User can comment on flashcard
-[] User can view all comments in study set/flashcards
-[x] Profile page with options to edit profile picture, and logout
-[x] Settings (notification, logout, delete account)
-[] User can update their profile image from their photo gallery or by taking a picture with their camera
+- [x] User can sign up to create a new account using Parse authentication
+- [x] User can log in and log out of his or her account
+- [x] The current signed in user is persisted accross app restarts
+- [ ] Upon login, user can view all sets
+- [x] User can create study set and add flashcards
+- [ ] User can add collaborators to study set
+- [ ] User can edit flashcards
+- [x] User can test themselves with term, definition, or both
+- [ ] User can mark whether they got a correct or incorrect term/definition when quizzing themself
+- [ ] Correct answer reports from the user will update a tally as they run through the set of flashcards.
+- [ ] Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
+- [ ] User can comment on flashcard
+- [ ] User can view all comments in study set/flashcards
+- [x] Profile page with options to edit profile picture, and logout
+- [x] Settings (notification, logout, delete account)
+- [ ] User can update their profile image from their photo gallery or by taking a picture with their camera
 
 **Optional Nice-to-have Stories**
 
-* After the user creates a study set, show an indeterminate progress bar while the set is being uploaded to Parse.
-* User can create class, add classmates who are automatically added to study sets created in class
-* User can create folder, add study sets to folder
-* Settings (offline studying)
+- [ ] After the user creates a study set, show an indeterminate progress bar while the set is being uploaded to Parse.
+- [ ] User can create class, add classmates who are automatically added to study sets created in class
+- [ ] User can create folder, add study sets to folder
+- [ ] Settings (offline studying)
 
 ### 2. Screen Archetypes
 
