@@ -76,6 +76,7 @@ class StudySetActivity : AppCompatActivity() {
             intent.putExtra("set" , set)
             startActivityForResult(intent, EDIT_SET_CODE)
         }
+        
         test.setOnClickListener {
             val intent = Intent(this, TestActivity::class.java)
             intent.putExtra("set", set)
@@ -106,6 +107,7 @@ class StudySetActivity : AppCompatActivity() {
                 } else {
                     Log.d("ACTIVITY", "flashcards get success")
                     Log.d("ACTIVITY" , "cardsList ${cardsList}")
+                    //Log.d("ACTIVITY" , "cardsList ${cardsList}")
                     querySetCount(cardsList)
                     if (cardsList.size != 0) {
                         flashcards.clear()
