@@ -47,7 +47,6 @@ class StudySetActivity : AppCompatActivity() {
         count = findViewById(R.id.id_count)
         terms = findViewById(R.id.id_terms)
         flashcardsRV = findViewById(R.id.id_flashCardsRV)
-
         back = findViewById(R.id.id_backBtn)
         leaderBoard = findViewById(R.id.id_leaderBoardBtn)
         test = findViewById(R.id.id_testBtn)
@@ -77,6 +76,12 @@ class StudySetActivity : AppCompatActivity() {
             intent.putExtra("set" , set)
             startActivityForResult(intent, EDIT_SET_CODE)
         }
+        
+        test.setOnClickListener {
+            val intent = Intent(this, TestActivity::class.java)
+            intent.putExtra("set", set)
+            startActivity(intent)
+        }
     }
 
     fun querySetCount(cardsList: MutableList<FlashCard>) {
@@ -101,6 +106,7 @@ class StudySetActivity : AppCompatActivity() {
                     Log.d("ACTIVITY", "flashcards get failure ${e}")
                 } else {
                     Log.d("ACTIVITY", "flashcards get success")
+                    Log.d("ACTIVITY" , "cardsList ${cardsList}")
                     //Log.d("ACTIVITY" , "cardsList ${cardsList}")
                     querySetCount(cardsList)
                     if (cardsList.size != 0) {

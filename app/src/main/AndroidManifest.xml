@@ -24,7 +24,6 @@
         android:theme="@style/Theme.Testapp"
         tools:targetApi="31">
         <activity
-
             android:name=".EditSetName"
             android:exported="false" />
         <activity
@@ -43,7 +42,10 @@
         <activity
             android:name=".StudySetActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".deleteAccountActivity"
             android:exported="false">
             <meta-data

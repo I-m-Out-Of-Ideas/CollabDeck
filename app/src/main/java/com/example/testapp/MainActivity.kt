@@ -88,7 +88,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        
         // take user to profile screen
         findViewById<Button>(R.id.profile_button).setOnClickListener {
             val intent = Intent(this@MainActivity, profile_activity::class.java)
