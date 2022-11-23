@@ -42,7 +42,7 @@ Our app lets registered users create sets of terms and definitions customized fo
 * User can comment on flashcard
 * User can view all comments in study set/flashcards
 * Profile page with options to edit profile picture, and logout
-* Settings (notification, logout, delete account)
+* Settings (logout, delete account)
 * User can update their profile image from their photo gallery or by taking a picture with their camera
 
 **Optional Nice-to-have Stories**
@@ -74,7 +74,7 @@ Our app lets registered users create sets of terms and definitions customized fo
    * Profile page to see user's profile picture, edit profile, or logout
    
 * Settings
-   * Settings (notification, logout, delete account)
+   * Settings (logout, delete account)
 
 ### 3. Navigation
 
