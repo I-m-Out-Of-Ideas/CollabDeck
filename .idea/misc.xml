@@ -16,6 +16,22 @@
         <entry key="..\:/Users/giant/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/flashcard.xml" value="0.2793819655521783" />
         <entry key="..\:/Users/giant/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/fragment_flashcard.xml" value="0.33" />
         <entry key="..\:/Users/giant/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/studyset.xml" value="0.19021739130434784" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/drawable-200dpi/add.xml" value="0.1085" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/drawable-200dpi/back.xml" value="0.1085" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/drawable-200dpi/delete.xml" value="0.1085" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/drawable-200dpi/edit.xml" value="0.1085" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/drawable/progress.xml" value="0.1085" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_add_flash_card.xml" value="0.1" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_create_set.xml" value="0.23076923076923078" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_edit_flash_card.xml" value="0.2" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_edit_set.xml" value="0.32142857142857145" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_edit_set_and_card.xml" value="0.1" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_edit_set_name.xml" value="0.536" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_main.xml" value="0.3302433371958285" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/activity_study_set.xml" value="0.32142857142857145" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/edit_flashcard.xml" value="0.1" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/flashcard.xml" value="0.6" />
+        <entry key="..\:/Users/ritik/AndroidStudioProjects/CollabDeck/app/src/main/res/layout/studyset.xml" value="0.23076923076923078" />
       </map>
     </option>
   </component>

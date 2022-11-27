@@ -45,6 +45,7 @@
         <activity
             android:name=".TestActivity"
             android:exported="false" />
+        <activity
             android:name=".deleteAccountActivity"
             android:exported="false">
             <meta-data
@@ -71,6 +72,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".logoutConfirmationActivity"
             android:exported="false">
