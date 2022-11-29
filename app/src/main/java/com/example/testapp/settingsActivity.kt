@@ -10,8 +10,6 @@ class settingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        // TODO: work on implementing push notifications
-
         // send user to logout confirmation screen
         findViewById<Button>(R.id.logout_button).setOnClickListener {
             val intent = Intent(this@settingsActivity, logoutConfirmationActivity::class.java)

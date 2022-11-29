@@ -15,6 +15,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.parse.ParseFile
 import com.parse.ParseUser
 import java.io.File
@@ -32,21 +34,39 @@ class editProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_profile)
         ivProfileImage = findViewById(R.id.ivProfileImage)
         tvUsernameE = findViewById(R.id.tvUsernameE)
+
+        val user = ParseUser.getCurrentUser()
+
         //TODO: populate ivProfileImage with current profile image
+        Glide.with(this).load(user.getParseFile("pfp")?.url).placeholder(R.drawable.loading).thumbnail(Glide.with(this).load(R.drawable.loading)).into(ivProfileImage)
         //so that when the user opens edit profile they can see their pfp
         tvUsernameE.text = ParseUser.getCurrentUser().username.toString()
+
         // take picture
         findViewById<Button>(R.id.openCamera).setOnClickListener{
             onLaunchCamera()
         }
+
         // accept changes, return user to profile screen
         findViewById<Button>(R.id.confirm_button).setOnClickListener {
-            val user = ParseUser.getCurrentUser()
+            Log.d("ACTIVITY" , "save btn clicked")
+            // loading screen while saving pic
+            Glide.with(this).asGif().load(R.drawable.loading).into(ivProfileImage);
             user.put("pfp", ParseFile(photoFile))
-            user.saveInBackground()
-            val intent = Intent(this@editProfileActivity, editProfileActivity::class.java)
-            startActivity(intent)
+            user.saveInBackground() {exception ->
+                Log.d("ACTIVITY" , "saving prof pic")
+                if (exception != null) {
+                    Log.d("ACTIVITY" , "confirmBtn fail ${exception}")
+                }
+                else {
+                    Log.d("ACTIVITY", "confirmBtn success")
+                    // once saved, return user to profile screen
+                    val intent = Intent(this@editProfileActivity, profile_activity::class.java)
+                    startActivity(intent)
+                }
+            }
         }
+
         // cancel changes, return user to profile screen
         findViewById<Button>(R.id.cancel_button).setOnClickListener {
             val intent = Intent(this@editProfileActivity, profile_activity::class.java)
@@ -62,8 +82,8 @@ class editProfileActivity : AppCompatActivity() {
                 //camera photo is on disk
                 val takenImage = BitmapFactory.decodeFile(photoFile!!.absolutePath)
                 //RESIZE BITMAP and load taken image into preview
-                val ivPreview: ImageView = findViewById(R.id.ivProfileImage)
-                ivPreview.setImageBitmap(takenImage)
+                Glide.with(this).load(takenImage).into(ivProfileImage)
+
             } else {
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show()
             }
@@ -101,7 +121,7 @@ class editProfileActivity : AppCompatActivity() {
         // Use `getExternalFilesDir` on Context to access package-specific directories.
         // This way, we don't need to request external read/write runtime permissions.
         val mediaStorageDir =
-            File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG)
+            File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "ACTIVITY")
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
@@ -111,8 +131,6 @@ class editProfileActivity : AppCompatActivity() {
         // Return the file target for the photo based on filename
         return File(mediaStorageDir.path + File.separator + fileName)
     }
-
-
 
     companion object {
         val TAG = "editProfileActivity"
