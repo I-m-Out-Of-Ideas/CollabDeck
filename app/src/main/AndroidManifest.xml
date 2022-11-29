@@ -54,10 +54,6 @@
             android:name=".deleteAccountActivity"
             android:exported="false" />
 
-        <meta-data
-            android:name="android.app.lib_name"
-            android:value="" />
-
         <activity
             android:name=".settingsActivity"
             android:exported="false">
