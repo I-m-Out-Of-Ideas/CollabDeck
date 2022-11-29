@@ -1,11 +1,8 @@
 package com.example.testapp
 
-import android.animation.AnimatorInflater
-import android.animation.AnimatorSet
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -14,14 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
-import org.w3c.dom.Text
 
 class TestActivity : AppCompatActivity() {
     lateinit var setName : TextView
-    lateinit var cardFront : TextView
-    lateinit var cardBack : TextView
-    lateinit var front_anim: AnimatorSet // for our pretty flip anim
-    lateinit var back_anim : AnimatorSet // for our pretty flip anim
     lateinit var flip : Button
     lateinit var set: StudySet
     lateinit var back : ImageButton
@@ -33,20 +25,16 @@ class TestActivity : AppCompatActivity() {
     lateinit var btnIncorrect: ImageButton
     var flashcards : ArrayList<FlashCard> = ArrayList()
     lateinit var adapter : FlashCardsAdapter
-    var isFront = true
     var n = 0
+    lateinit var flashFragment: FlashcardFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-        var scale = applicationContext.resources.displayMetrics.density
-
         setName = findViewById(R.id.id_setName)
         flip = findViewById(R.id.flip_btn)
         back = findViewById(R.id.id_backBtn)
-        cardFront = findViewById(R.id.card_front)
-        cardBack = findViewById(R.id.card_back)
         leaderBoard = findViewById(R.id.id_leaderBoardBtn)
         comments = findViewById(R.id.id_commentBtn)
         btnNextCard = findViewById(R.id.btnNextCard)
@@ -54,17 +42,8 @@ class TestActivity : AppCompatActivity() {
         btnCorrect = findViewById(R.id.btnCorrect)
         btnIncorrect = findViewById(R.id.btnIncorrect)
         set = intent.getParcelableExtra("set")!! // get the set given from the StudySetActivity
-        setName.text = set?.getSetName()
+        setName.text = set.getSetName()
         adapter = FlashCardsAdapter(flashcards, this, false)
-
-        cardFront.cameraDistance = 8000 * scale
-        cardBack.cameraDistance = 8000 * scale
-
-        // pretty animation stuff
-        front_anim = AnimatorInflater.loadAnimator(applicationContext, R.animator.front_animator)
-                as AnimatorSet
-        back_anim = AnimatorInflater.loadAnimator(applicationContext, R.animator.back_animator)
-                as AnimatorSet
 
         queryFlashCards(set)
 
@@ -77,23 +56,9 @@ class TestActivity : AppCompatActivity() {
 
         // flip the card over!
         flip.setOnClickListener {
-            if(isFront)
-            {
-                front_anim.setTarget(cardFront)
-                back_anim.setTarget(cardBack)
-                front_anim.start()
-                back_anim.start()
-                isFront = false
-            }
-            else
-            {
-                front_anim.setTarget(cardBack)
-                back_anim.setTarget(cardFront)
-                back_anim.start()
-                front_anim.start()
-                isFront = true
-            }
+            flashFragment.flip()
         }
+
 
         // go back to last card. If we're on the first card...don't
         btnLastCard.setOnClickListener {
@@ -101,8 +66,12 @@ class TestActivity : AppCompatActivity() {
                 Toast.makeText(this, "This is the first card!", Toast.LENGTH_SHORT).show()
             else {
                 n--
-                cardFront.text = flashcards[n].getTerm()
-                cardBack.text = flashcards[n].getDefinition()
+                val args = Bundle()
+                args.putString("term", flashcards[n].getTerm())
+                args.putString("def", flashcards[n].getDefinition())
+                flashFragment = FlashcardFragment()
+                flashFragment.arguments = args
+                supportFragmentManager.beginTransaction().replace(R.id.root_container, flashFragment).commit()
             }
         }
 
@@ -114,8 +83,12 @@ class TestActivity : AppCompatActivity() {
                 n--
             }
             else {
-                cardFront.text = flashcards[n].getTerm()
-                cardBack.text = flashcards[n].getDefinition()
+                val args = Bundle()
+                args.putString("term", flashcards[n].getTerm())
+                args.putString("def", flashcards[n].getDefinition())
+                flashFragment = FlashcardFragment()
+                flashFragment.arguments = args
+                supportFragmentManager.beginTransaction().replace(R.id.root_container, flashFragment).commit()
             }
         }
 
@@ -142,7 +115,7 @@ class TestActivity : AppCompatActivity() {
         val query : ParseQuery<FlashCard> = ParseQuery.getQuery(FlashCard::class.java)
         query.include(FlashCard.KEY_TERM)
         query.include(FlashCard.KEY_DEFINITION)
-        query.whereEqualTo(FlashCard.KEY_STUDYSET, set);
+        query.whereEqualTo(FlashCard.KEY_STUDYSET, set)
         query.addDescendingOrder("createdAt")
         query.findInBackground(object : FindCallback<FlashCard> {
             override fun done(cardsList: MutableList<FlashCard>, e: ParseException?) {
@@ -156,11 +129,15 @@ class TestActivity : AppCompatActivity() {
                         flashcards.addAll(cardsList)
                         adapter.notifyDataSetChanged()
                         // this is how we get our terms and definitions. Easy!
-                        cardFront.text = flashcards[n].getTerm()
-                        cardBack.text = flashcards[n].getDefinition()
+                        val args = Bundle()
+                        args.putString("term", flashcards[n].getTerm())
+                        args.putString("def", flashcards[n].getDefinition())
+                        flashFragment = FlashcardFragment()
+                        flashFragment.arguments = args
+                        supportFragmentManager.beginTransaction().replace(R.id.root_container, flashFragment).commit()
                     }
                     else
-                        cardFront.visibility = View.GONE
+                        flashFragment.isVisible
                 }
             }
         })
