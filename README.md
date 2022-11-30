@@ -1,4 +1,4 @@
-Original App Design Project - README Template 
+Original App Design Project - README
 ===
 
 # CollabDeck
@@ -31,15 +31,15 @@ Our app lets registered users create sets of terms and definitions customized fo
 - [x] User can sign up to create a new account using Parse authentication
 - [x] User can log in and log out of his or her account
 - [x] The current signed in user is persisted accross app restarts
-- [ ] Upon login, user can view all sets
+- [x] Upon login, user can view all sets
 - [x] User can create study set and add flashcards
 - [ ] User can add collaborators to study set
-- [ ] User can edit flashcards
+- [x] User can edit flashcards
 - [x] User can test themselves with term, definition, or both
 - [ ] User can mark whether they got a correct or incorrect term/definition when quizzing themself
 - [ ] Correct answer reports from the user will update a tally as they run through the set of flashcards.
 - [ ] Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
-- [ ] User can comment on flashcard
+- [x] User can comment on flashcard
 - [ ] User can view all comments in study set/flashcards
 - [x] Profile page with options to edit profile picture, and logout
 - [x] Settings (logout, delete account)
