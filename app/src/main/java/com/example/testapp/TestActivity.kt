@@ -106,7 +106,10 @@ class TestActivity : AppCompatActivity() {
         }
         // show comments (NOT FUNCTIONAL YET. TOAST FOR NOW)
         comments.setOnClickListener {
-            Toast.makeText(this, "Show comments!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this , CommentPage::class.java)
+            intent.putExtra("flashcard" , flashcards[n])
+            intent.putExtra("set", set)
+            startActivity(intent)
         }
     }
 
