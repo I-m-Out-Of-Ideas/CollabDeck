@@ -110,7 +110,15 @@ Our app lets registered users create sets of terms and definitions customized fo
 
 Here's a walkthrough of implemented user stories:
 
+### Sprint 1
+
 <img src="CollabDeckSprint1GIF.gif" width=25% height=25%><br>
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+### Sprint 2
+
+<img src="CollabDeckSprint2GIF.gif" width=25% height=25%><br>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
