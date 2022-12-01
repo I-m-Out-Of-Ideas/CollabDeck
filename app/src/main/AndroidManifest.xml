@@ -24,9 +24,13 @@
         android:theme="@style/Theme.Testapp"
         tools:targetApi="31">
         <activity
+            android:name=".LeaderboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateComment"
             android:exported="false" />
-        <activity android:name=".CommentPage"
+        <activity
+            android:name=".CommentPage"
             android:exported="false" />
         <activity
             android:name=".EditSetName"
@@ -53,7 +57,6 @@
         <activity
             android:name=".deleteAccountActivity"
             android:exported="false" />
-
         <activity
             android:name=".settingsActivity"
             android:exported="false">
