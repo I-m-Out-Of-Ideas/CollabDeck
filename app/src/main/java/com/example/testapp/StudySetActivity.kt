@@ -4,15 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.parse.FindCallback
-import com.parse.GetCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
 
@@ -82,11 +79,17 @@ class StudySetActivity : AppCompatActivity() {
             intent.putExtra("set", set)
             startActivity(intent)
         }
+
+        collaborators.setOnClickListener{
+            val intent = Intent(this , CollaboratorsActivity::class.java)
+            intent.putExtra("set" , set)
+            startActivity(intent)
+        }
     }
 
     fun querySetCount(cardsList: MutableList<FlashCard>) {
         termsCount.text = cardsList.size.toString()
-        //Log.d("RITIKA" , "seize ${cardsList.size}")
+        //Log.d("ACTIVITY" , "seize ${cardsList.size}")
         if (cardsList.size == 1)
             count.text = " term"
         else

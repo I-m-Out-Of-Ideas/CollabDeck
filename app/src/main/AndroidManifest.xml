@@ -48,6 +48,9 @@
             android:name=".StudySetActivity"
             android:exported="false" />
         <activity
+            android:name=".CollaboratorsActivity"
+            android:exported="false" />
+        <activity
             android:name=".TestActivity"
             android:exported="false" />
         <activity
