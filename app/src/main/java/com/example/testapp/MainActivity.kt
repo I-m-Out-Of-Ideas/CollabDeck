@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var createSet : Button
 
     lateinit var adapter : StudySetsAdapter
-    var studySets : MutableList<StudySet> = mutableListOf()
+    var studySets : ArrayList<StudySet> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
