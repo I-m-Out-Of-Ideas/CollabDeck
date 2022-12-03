@@ -17,6 +17,8 @@ class CollabDeckApplication : Application() {
 
         ParseObject.registerSubclass(Comment::class.java)
 
+        ParseObject.registerSubclass(Leaderboard::class.java)
+
         Parse.initialize(
             Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))
