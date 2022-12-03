@@ -3,6 +3,7 @@ package com.example.testapp
 import com.parse.ParseClassName
 import com.parse.ParseObject
 import com.parse.ParseUser
+import java.util.*
 
 @ParseClassName("StudySet")
 class StudySet : ParseObject() {
@@ -12,7 +13,11 @@ class StudySet : ParseObject() {
     }
 
     fun addCollaborator(user : ParseUser) {
-        put(KEY_COLLABORATOR , mutableListOf(user))
+        add(KEY_COLLABORATOR , user)
+    }
+
+    fun removeCollaborator(user : ParseUser) {
+        removeAll(KEY_COLLABORATOR, Arrays.asList(user))
     }
 
     fun getSetName() : String? {
