@@ -6,15 +6,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.parse.FindCallback
-import com.parse.ParseException
-import com.parse.ParseQuery
+import com.parse.*
 
-class StudySetsAdapter(private var studysets : List<StudySet>, private val context : Context) : RecyclerView.Adapter<StudySetsAdapter.ViewHolder>() {
+class StudySetsAdapter(private var studysets : ArrayList<StudySet>, private val context : Context) : RecyclerView.Adapter<StudySetsAdapter.ViewHolder>() {
 
     lateinit var studySet: StudySet
 
@@ -33,15 +32,27 @@ class StudySetsAdapter(private var studysets : List<StudySet>, private val conte
         return studysets.size
     }
 
+    fun remove(position: Int) {
+        studysets.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, studysets.size)
+    }
+
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
         private val setName = itemView?.findViewById<TextView>(R.id.id_setName)
         private val termsCount = itemView?.findViewById<TextView>(R.id.id_termsCount)
         private val terms = itemView?.findViewById<TextView>(R.id.id_terms)
         private val setCreator = itemView?.findViewById<TextView>(R.id.id_setCreator)
+        private val delete = itemView?.findViewById<ImageView>(R.id.id_delBtn)
 
         fun bind(set: StudySet) {
             setName?.text = set.getSetName()
-            setCreator?.text = set.getCollaborators()?.get(0)?.fetchIfNeeded()?.username
+
+            val creator : String? = set.getCollaborators()?.get(0)?.fetchIfNeeded()?.username
+            setCreator?.text = creator
+
+            if (!creator.equals(ParseUser.getCurrentUser().username))
+                delete?.visibility = View.GONE
 
             val query : ParseQuery<FlashCard> = ParseQuery.getQuery(FlashCard::class.java)
             query.include(FlashCard.KEY_TERM)
@@ -70,6 +81,52 @@ class StudySetsAdapter(private var studysets : List<StudySet>, private val conte
                 val intent = Intent(context , StudySetActivity::class.java)
                 intent.putExtra("set" , set)
                 context.startActivity(intent)
+            }
+
+            delete?.setOnClickListener {
+                val query : ParseQuery<FlashCard> = ParseQuery.getQuery(FlashCard::class.java)
+                query.whereEqualTo(FlashCard.KEY_STUDYSET, set)
+                query.findInBackground(object : FindCallback <FlashCard> {
+                    override fun done(cards: List<FlashCard>, e: ParseException?) {
+                        if (e == null) {
+                            Log.d("ACTIVITY" , "delete flashcard get success $cards")
+                            cards.forEach {
+                                it.deleteInBackground(object  : DeleteCallback {
+                                    override fun done(e: ParseException?) {
+                                        if (e == null) {
+                                            Log.d("ACTIVITY" , "delete flashcard delete success")
+                                        } else {
+                                            Log.d("ACTIVITY" , "delete flashcard delete failure")
+                                        }
+                                    }
+                                })
+                            }
+                            val query : ParseQuery<StudySet> = ParseQuery.getQuery(StudySet::class.java)
+                            query.whereEqualTo("objectId", set.objectId)
+                            query.findInBackground(object : FindCallback <StudySet> {
+                                override fun done(study: List<StudySet>, e: ParseException?) {
+                                    if (e == null) {
+                                        Log.d("ACTIVITY" , "delete set get success")
+                                        study[0].deleteInBackground(object : DeleteCallback {
+                                            override fun done(e: ParseException?) {
+                                                if (e == null) {
+                                                    Log.d("ACTIVITY" , "delete set delete success")
+                                                    remove(adapterPosition)
+                                                } else {
+                                                    Log.d("ACTIVITY" , "delete set delete failure")
+                                                }
+                                            }
+                                        })
+                                    } else {
+                                        Log.d("ACTIVITY" , "delete get fail")
+                                    }
+                                }
+                            })
+                        } else {
+                            Log.d("ACTIVITY" , "delete get fail")
+                        }
+                    }
+                })
             }
 
         }
