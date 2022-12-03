@@ -12,32 +12,49 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp">
 
-        <TextView
-            android:id="@+id/id_setName"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="name"/>
+            android:layout_toLeftOf="@id/id_delBtn">
 
-        <TextView
-            android:id="@+id/id_termsCount"
+            <TextView
+                android:id="@+id/id_setName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="name"/>
+
+            <TextView
+                android:id="@+id/id_termsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_setName"
+                android:text="100" />
+            <TextView
+                android:id="@+id/id_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/id_termsCount"
+                android:layout_toRightOf="@id/id_termsCount"
+                android:text=" terms" />
+            <TextView
+                android:id="@+id/id_setCreator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/id_termsCount"
+                android:layout_marginTop="10dp"
+                android:text="username" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/id_delBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/id_setName"
-            android:text="100" />
-        <TextView
-            android:id="@+id/id_terms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/id_termsCount"
-            android:layout_toRightOf="@id/id_termsCount"
-            android:text=" terms" />
-        <TextView
-            android:id="@+id/id_setCreator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/id_termsCount"
-            android:layout_marginTop="10dp"
-            android:text="username" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:src="@drawable/delete" />
     </RelativeLayout>
+
 </androidx.cardview.widget.CardView>
