@@ -107,6 +107,7 @@ class TestActivity : AppCompatActivity() {
         leaderBoard.setOnClickListener {
             postScore()
             val intent = Intent(this , LeaderboardActivity::class.java)
+            intent.putExtra("set", set)
             startActivity(intent)
         }
         // save score and show comments (going to the comments page confirms your score and posts it to the leaderboard)
