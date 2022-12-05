@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.parse.FindCallback
 import com.parse.ParseException
 import com.parse.ParseQuery
+import com.parse.ParseUser
 
 class TestActivity : AppCompatActivity() {
     lateinit var setName : TextView
@@ -24,8 +25,10 @@ class TestActivity : AppCompatActivity() {
     lateinit var btnCorrect: ImageButton
     lateinit var btnIncorrect: ImageButton
     var flashcards : ArrayList<FlashCard> = ArrayList()
+    var cardsCorrect : ArrayList<Boolean> = ArrayList()
     lateinit var adapter : FlashCardsAdapter
     var n = 0
+    var score = 0
     lateinit var flashFragment: FlashcardFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,20 +95,24 @@ class TestActivity : AppCompatActivity() {
             }
         }
 
-        // mark on leaderboard as correct (NOT FUNCTIONAL YET. TOAST FOR NOW)
+        // mark card as correct
         btnCorrect.setOnClickListener {
-            Toast.makeText(this, "Marked as correct!", Toast.LENGTH_SHORT).show()
+            cardsCorrect[n] = true
         }
-        // mark on leaderboard as incorrect (NOT FUNCTIONAL YET. TOAST FOR NOW)
+        // mark card as incorrect
         btnIncorrect.setOnClickListener {
-            Toast.makeText(this, "Marked as incorrect", Toast.LENGTH_SHORT).show()
+            cardsCorrect[n] = false
         }
-        // show leaderboard (NOT FUNCTIONAL YET. TOAST FOR NOW)
+        // save score and show leaderboard (going to the leaderboard page confirms your score and posts it to the leaderboard)
         leaderBoard.setOnClickListener {
-            Toast.makeText(this, "Show leaderboard!", Toast.LENGTH_SHORT).show()
+            postScore()
+            val intent = Intent(this , LeaderboardActivity::class.java)
+            intent.putExtra("set", set)
+            startActivity(intent)
         }
-        // show comments (NOT FUNCTIONAL YET. TOAST FOR NOW)
+        // save score and show comments (going to the comments page confirms your score and posts it to the leaderboard)
         comments.setOnClickListener {
+            postScore()
             val intent = Intent(this , CommentPage::class.java)
             intent.putExtra("flashcard" , flashcards[n])
             intent.putExtra("set", set)
@@ -130,6 +137,9 @@ class TestActivity : AppCompatActivity() {
                     if (cardsList.size != 0) {
                         flashcards.clear()
                         flashcards.addAll(cardsList)
+                        for(card in flashcards) {   //populate the table with as many booleans as there are cards
+                            cardsCorrect.add(false) //mark as wrong by default. catch this L bestie
+                        }
                         adapter.notifyDataSetChanged()
                         // this is how we get our terms and definitions. Easy!
                         val args = Bundle()
@@ -144,5 +154,29 @@ class TestActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    fun postScore() {
+        for (bool in cardsCorrect){ //collect up total correct
+            if (bool) {
+                score++
+            }
+        }
+        val leaderboardObj = Leaderboard()
+        leaderboardObj.setUser(ParseUser.getCurrentUser())
+        leaderboardObj.setSet(set)
+        leaderboardObj.setScore(score)
+        leaderboardObj.setTotal(flashcards.size)
+        leaderboardObj.saveInBackground { exception ->
+            if (exception != null) {
+                // Something went wrong
+                Log.e("TestActivity", "Error while saving score")
+                exception.printStackTrace()
+                Toast.makeText(this, "Error saving score!",
+                    Toast.LENGTH_SHORT).show()
+            } else {
+                Log.i("TestActivity", "Successfully saved score!")
+            }
+        }
     }
 }
