@@ -37,7 +37,7 @@ Our app lets registered users create sets of terms and definitions customized fo
 - [x] User can edit flashcards
 - [x] User can test themselves with term, definition, or both
 - [x] User can mark whether they got a correct or incorrect term/definition when quizzing themself
-- [ ] Correct answer reports from the user will update a tally as they run through the set of flashcards.
+- [x] Correct answer reports from the user will update a tally as they run through the set of flashcards.
 - [x] Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
 - [x] User can comment on flashcard
 - [x] User can view all comments in study set/flashcards
