@@ -36,11 +36,11 @@ Our app lets registered users create sets of terms and definitions customized fo
 - [ ] User can add collaborators to study set
 - [x] User can edit flashcards
 - [x] User can test themselves with term, definition, or both
-- [ ] User can mark whether they got a correct or incorrect term/definition when quizzing themself
+- [x] User can mark whether they got a correct or incorrect term/definition when quizzing themself
 - [ ] Correct answer reports from the user will update a tally as they run through the set of flashcards.
-- [ ] Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
+- [x] Tallies of correct answers (scores) as well as the associated user will be present on a leaderboard page which can be accessed from the flashcard set.
 - [x] User can comment on flashcard
-- [ ] User can view all comments in study set/flashcards
+- [x] User can view all comments in study set/flashcards
 - [x] Profile page with options to edit profile picture, and logout
 - [x] Settings (logout, delete account)
 - [ ] User can update their profile image from their photo gallery or by taking a picture with their camera
