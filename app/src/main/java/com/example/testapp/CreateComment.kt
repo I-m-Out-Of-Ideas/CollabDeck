@@ -41,7 +41,7 @@ class CreateComment : AppCompatActivity() {
             val intent = Intent(this , CommentPage::class.java)
             intent.putExtra("set", set)
             intent.putExtra("flashcard", flashcard)
-            startActivity(intent)
+            startActivityForResult(intent, ADD_COMMENT_CODE)
         }
     }
 
@@ -65,5 +65,6 @@ class CreateComment : AppCompatActivity() {
 
     companion object {
         const val TAG = "CreateComment"
+        val ADD_COMMENT_CODE = 8080
     }
 }

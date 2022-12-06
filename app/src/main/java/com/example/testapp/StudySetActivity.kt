@@ -68,7 +68,7 @@ class StudySetActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        edit.setOnClickListener{
+        edit.setOnClickListener {
             val intent = Intent(this , EditSet::class.java)
             intent.putExtra("set" , set)
             startActivityForResult(intent, EDIT_SET_CODE)
@@ -80,7 +80,7 @@ class StudySetActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        collaborators.setOnClickListener{
+        collaborators.setOnClickListener {
             val intent = Intent(this , CollaboratorsActivity::class.java)
             intent.putExtra("set" , set)
             startActivity(intent)
@@ -101,7 +101,7 @@ class StudySetActivity : AppCompatActivity() {
         val query : ParseQuery<FlashCard> = ParseQuery.getQuery(FlashCard::class.java)
         query.include(FlashCard.KEY_TERM)
         query.include(FlashCard.KEY_DEFINITION)
-        query.whereEqualTo(FlashCard.KEY_STUDYSET, set);
+        query.whereEqualTo(FlashCard.KEY_STUDYSET, set)
         query.addDescendingOrder("createdAt")
         query.findInBackground(object : FindCallback<FlashCard> {
             override fun done(cardsList: MutableList<FlashCard>, e: ParseException?) {
