@@ -9,7 +9,6 @@ class CollabDeckApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        ParseObject.registerSubclass(User::class.java)
 
         ParseObject.registerSubclass(StudySet::class.java)
 
