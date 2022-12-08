@@ -8,6 +8,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.parse.ParseUser
+import com.parse.SignUpCallback
+import com.parse.Parse
+import com.parse.ParseException
+
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 e.printStackTrace()
                 Toast.makeText(this, "Login error", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "User can't be logged in")
             }})
         )
     }
@@ -51,10 +56,12 @@ class LoginActivity : AppCompatActivity() {
         user.signUpInBackground { e ->
             if (e == null) {
                 Log.i(TAG, "Signup success")
-                loginUser(username, password)
+                //loginUser(username, password)
+                toMain()
             } else {
                 e.printStackTrace()
                 Toast.makeText(this, "Signup error", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "User can't create an account!")
             }
         }
     }
