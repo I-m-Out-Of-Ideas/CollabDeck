@@ -24,9 +24,9 @@ class CollaboratorsActivity : AppCompatActivity() {
 
     lateinit var adapter : CollaboratorsAdapter
     lateinit var mAdapter : CollabRVAdapter
-    var collaborators : ArrayList<User> = ArrayList()
+    var collaborators : ArrayList<ParseUser> = ArrayList()
     var set : StudySet? = null
-    var users : ArrayList<User> = ArrayList()
+    var users : ArrayList<ParseUser> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class CollaboratorsActivity : AppCompatActivity() {
                 .setCancelable(false)
                 .setPositiveButton("Add", object : DialogInterface.OnClickListener {
                     override fun onClick(p0: DialogInterface?, p1: Int) {
-                        val selected : User? = mAdapter.selected
+                        val selected : ParseUser? = mAdapter.selected
                         Log.d("ACTIVITY" , "selected $selected")
                         val query: ParseQuery<StudySet> = ParseQuery.getQuery(StudySet::class.java)
                         query.getInBackground(set?.objectId, object : GetCallback<StudySet> {
@@ -101,7 +101,7 @@ class CollaboratorsActivity : AppCompatActivity() {
                         if (userList != null) {
                             Log.d("ACTIVITY", "users not empty")
                             users.clear()
-                            users.addAll(userList as MutableList<User>)
+                            users.addAll(userList)
 
                             Log.d("ACTIVITY" , "users ${users}")
 
@@ -151,7 +151,7 @@ class CollaboratorsActivity : AppCompatActivity() {
     }
 
     fun filter(text: String) {
-        val filteredlist: ArrayList<User> = ArrayList<User>()
+        val filteredlist: ArrayList<ParseUser> = ArrayList<ParseUser>()
 
         if (text.isEmpty()) {}
         else {
@@ -171,7 +171,7 @@ class CollaboratorsActivity : AppCompatActivity() {
 
     fun queryCollaborators(set : StudySet?) {
         collaborators.clear()
-        collaborators.addAll(set?.getCollaborators() as Collection<User>)
+        collaborators.addAll(set?.getCollaborators() as Collection<ParseUser>)
         adapter.notifyDataSetChanged()
         Log.d("ACTIVITY" , "queryCollaborators complete ${collaborators}")
     }

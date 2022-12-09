@@ -14,9 +14,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.parse.*
 import java.util.ArrayList
 
-class CollaboratorsAdapter(private var collaborators: ArrayList<User>, private val context: Context, private var setId: String) : RecyclerView.Adapter<CollaboratorsAdapter.ViewHolder>() {
+class CollaboratorsAdapter(private var collaborators: ArrayList<ParseUser>, private val context: Context, private var setId: String) : RecyclerView.Adapter<CollaboratorsAdapter.ViewHolder>() {
 
-    lateinit var collaborator: User
+    lateinit var collaborator: ParseUser
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -33,20 +33,14 @@ class CollaboratorsAdapter(private var collaborators: ArrayList<User>, private v
         return collaborators.size
     }
 
-    fun remove(position: Int) {
-        collaborators.removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, collaborators.size)
-    }
-
     inner class ViewHolder(itemView : View?) : RecyclerView.ViewHolder(itemView!!) {
         private val profImg = itemView?.findViewById<ImageView>(R.id.id_profileImg)
         private val username = itemView?.findViewById<TextView>(R.id.id_username)
         private val role = itemView?.findViewById<TextView>(R.id.id_role)
         private val delete = itemView?.findViewById<ImageView>(R.id.id_delBtn)
 
-        fun bind(collaborator : User) {
-            Glide.with(itemView.context).load(collaborator.getParseFile("pfp")?.url).placeholder(R.drawable.loading).thumbnail(Glide.with(itemView.context).load(R.drawable.loading)).apply(RequestOptions.circleCropTransform()).into(profImg!!)
+        fun bind(collaborator : ParseUser) {
+            Glide.with(itemView.context).load(collaborator.fetchIfNeeded().getParseFile("pfp")?.url).placeholder(R.drawable.loading).thumbnail(Glide.with(itemView.context).load(R.drawable.loading)).apply(RequestOptions.circleCropTransform()).into(profImg!!)
             username?.text = collaborator.fetchIfNeeded().username
 
             if (collaborator == collaborators.get(0)) {
