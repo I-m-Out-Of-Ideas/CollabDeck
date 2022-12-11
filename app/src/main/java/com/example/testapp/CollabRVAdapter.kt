@@ -13,14 +13,15 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.parse.ParseUser
 
 
-class CollabRVAdapter(private val context: Context, private var users: ArrayList<User>, private var collaborators: ArrayList<User>, private var searchLayout: RelativeLayout, private var cardLayout: CardView, private var dialog: AlertDialog) : RecyclerView.Adapter<CollabRVAdapter.ViewHolder>() {
+class CollabRVAdapter(private val context: Context, private var users: ArrayList<ParseUser>, private var collaborators: ArrayList<ParseUser>, private var searchLayout: RelativeLayout, private var cardLayout: CardView, private var dialog: AlertDialog) : RecyclerView.Adapter<CollabRVAdapter.ViewHolder>() {
 
-    lateinit var user : User
-    var selected : User? = null
+    lateinit var user : ParseUser
+    var selected : ParseUser? = null
 
-    fun filterList(filterList: ArrayList<User>) {
+    fun filterList(filterList: ArrayList<ParseUser>) {
         users = filterList
         notifyDataSetChanged()
     }
@@ -44,7 +45,7 @@ class CollabRVAdapter(private val context: Context, private var users: ArrayList
         private val username = itemView.findViewById<TextView>(R.id.id_username)
         private val subtitle = itemView.findViewById<TextView>(R.id.id_subtitle)
 
-        fun bind(user : User) {
+        fun bind(user : ParseUser) {
             username.text = user.username
 
             Glide.with(context).load(user.getParseFile("pfp")?.url).placeholder(R.drawable.loading).thumbnail(Glide.with(context).load(R.drawable.loading)).apply(RequestOptions.circleCropTransform()).into(profileImg)

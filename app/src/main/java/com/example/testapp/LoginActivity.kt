@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.core.view.children
 import com.parse.ParseUser
 import com.parse.SignUpCallback
 import com.parse.Parse
@@ -36,7 +36,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(username: String, password: String) {
+        progressOn()
         ParseUser.logInInBackground(username, password, ({ user, e ->
+            progressOff()
             if (user != null) {
                 Log.i(TAG, "Login success")
                 toMain()
@@ -49,11 +51,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signupUser(username: String, password: String) {
+        progressOn()
         val user = ParseUser()
         // Set fields for the user to be created
         user.setUsername(username)
         user.setPassword(password)
         user.signUpInBackground { e ->
+            progressOff()
             if (e == null) {
                 Log.i(TAG, "Signup success")
                 //loginUser(username, password)
@@ -72,7 +76,23 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
+    fun progressOn() {
+        findViewById<ProgressBar>(R.id.id_progress).visibility = View.VISIBLE
+        findViewById<RelativeLayout>(R.id.id_layout).children.iterator().forEach {
+            it.isEnabled = false
+            it.alpha = 0.25F
+        }
+    }
+
+    fun progressOff() {
+        findViewById<ProgressBar>(R.id.id_progress).visibility = View.GONE
+        findViewById<RelativeLayout>(R.id.id_layout).children.iterator().forEach {
+            it.isEnabled = true
+            it.alpha = 1F
+        }
+    }
+
     companion object {
-        val TAG = "LoginActivity"
+        val TAG = "ACTIVITY"
     }
 }

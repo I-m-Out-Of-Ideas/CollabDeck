@@ -9,7 +9,6 @@ class CollabDeckApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-
         ParseObject.registerSubclass(StudySet::class.java)
 
         ParseObject.registerSubclass(FlashCard::class.java)
