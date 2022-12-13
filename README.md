@@ -122,6 +122,16 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
+### Sprint 3
+
+<img src="CollabDeckSprint3GIF.gif" width=25% height=25%><br>
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/). 
+
+
+### Sprint 4
+
+
 ## Wireframes
 ![handdrawn designs](https://user-images.githubusercontent.com/85243009/200191100-a55a11ce-d7ff-4ce7-b5d6-c9fcf2f74483.jpg)
 
