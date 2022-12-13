@@ -33,7 +33,7 @@ Our app lets registered users create sets of terms and definitions customized fo
 - [x] The current signed in user is persisted accross app restarts
 - [x] Upon login, user can view all sets
 - [x] User can create study set and add flashcards
-- [ ] User can add collaborators to study set
+- [x] User can add collaborators to study set
 - [x] User can edit flashcards
 - [x] User can test themselves with term, definition, or both
 - [x] User can mark whether they got a correct or incorrect term/definition when quizzing themself
@@ -43,11 +43,11 @@ Our app lets registered users create sets of terms and definitions customized fo
 - [x] User can view all comments in study set/flashcards
 - [x] Profile page with options to edit profile picture, and logout
 - [x] Settings (logout, delete account)
-- [ ] User can update their profile image from their photo gallery or by taking a picture with their camera
+- [x] User can update their profile image from their photo gallery or by taking a picture with their camera
 
 **Optional Nice-to-have Stories**
 
-- [ ] After the user creates a study set, show an indeterminate progress bar while the set is being uploaded to Parse.
+- [x] After the user creates a study set, show an indeterminate progress bar while the set is being uploaded to Parse.
 - [ ] User can create class, add classmates who are automatically added to study sets created in class
 - [ ] User can create folder, add study sets to folder
 - [ ] Settings (offline studying)
